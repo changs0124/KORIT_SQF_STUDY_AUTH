@@ -14,6 +14,22 @@ import org.mindrot.jbcrypt.BCrypt;
 import dao.UserDao;
 import entity.User;
 
+/*
+ *  Servlet 3대 저장소 특징
+ *  1. Application(Context)
+ *  - 전역(모든 쓰레드가 접근할 수 있는 영역)
+ *  - 서블릿 설정관련 데이터(객체)들을 보관
+ *  - 생명주기: 서버가 실행되어지고 종료도어질 때까지
+ *  
+ *  2. Request
+ *  - 요청이 들어오고 Filter, Servlet, JSP 등 서로 Request 객체를 넘겨줄 때 사용.
+ *  - 생명주기: 서버가 실행되어지고 종료되어질 떄까지는 공통, 요청이 들어오고 응답이 되어지면 소멸
+ *  
+ *  3. Session
+ *  - 동일 클라이언트(동일 JSESSION KEY값)일 때 데이터를 유지
+ * 	- 생명주기: 서버가 실행되어지고 종료되어질 떄까지는 공통, 첫 요청때부터 브라우저(크롬)가 종료되거나, 만료시간이 다되거나, 서버가 종료되면 소멸
+ * */
+
 @WebServlet("/api/login")
 public class loginServiceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
